@@ -3,7 +3,6 @@ package com.stockholm.common.api;
 
 import android.content.Context;
 
-import com.stockholm.common.BuildConfig;
 import com.stockholm.common.R;
 import com.stockholm.common.utils.PreferenceFactory;
 
@@ -11,20 +10,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 import javax.inject.Singleton;
 
 @Singleton
-public class EnvProvider implements Provider<EnvData> {
+public class EnvProvider {
 
     private final Map<Env, EnvData> envDataMap = new HashMap<>();
     private PreferenceFactory factory;
-    private Env env;
 
     @Inject
-    public EnvProvider(Context context, PreferenceFactory factory, Env env) {
+    public EnvProvider(Context context, PreferenceFactory factory) {
         this.factory = factory;
-        this.env = env;
         envDataMap.put(Env.DEV, new EnvData(context.getString(R.string.dev_url),
             context.getString(R.string.dev_ws_url)));
         envDataMap.put(Env.STG, new EnvData(context.getString(R.string.stag_url),
@@ -33,11 +29,10 @@ public class EnvProvider implements Provider<EnvData> {
             context.getString(R.string.prod_ws_url)));
     }
 
-    @Override
-    public EnvData get() {
+    public EnvData get(Env env) {
         ApiConfig apiConfig = factory.create(ApiConfig.class);
         Env defaultEnv = Env.DEV;
-        switch (this.env.ordinal()) {
+        switch (env.ordinal()) {
             case 1:
                 defaultEnv = Env.DEV;
                 break;
