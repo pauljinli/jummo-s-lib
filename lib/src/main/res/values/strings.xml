@@ -1,3 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">lib</string>
+
+    <string name="user_guide_welcome">欢迎使用\n桔猫智能时钟</string>
+
+    <string name="user_guide_key_up">上键</string>
+    <string name="user_guide_key_down">下键</string>
+    <string name="user_guide_key_ok">中键</string>
+    <string name="user_guide_key_line">拉绳</string>
+
+    <string name="user_guide_pre">上一个</string>
+    <string name="user_guide_next">下一个</string>
+    <string name="user_guide_ok">选定</string>
+
+    <string name="user_guide_skip">长拉拉绳跳过教程</string>
+    <string name="user_guide_start">点击中键开启教程</string>
+
+    <string name="guide_step_1">试试长按中键</string>
+    <string name="guide_step_2">上下键切换，中键选定</string>
+    <string name="guide_step_3">拉一下拉绳</string>
+    <string name="guide_step_4">长按中键</string>
+    <string name="guide_step_5">长按中键</string>
+    <string name="guide_step_6">拉一下拉绳</string>
+    <string name="guide_step_2_tip">快来给桔猫换一个皮肤吧</string>
+    <string name="guide_step_3_tip">哇！真赞\n切换到下一个技能</string>
+    <string name="guide_step_4_tip">来看看最近几天的天气吧</string>
+    <string name="guide_step_5_tip">退出天气详情</string>
+    <string name="guide_step_6_tip">切换到下一个</string>
+    <string name="guide_step_end">点击中键完成教程</string>
+
+    <string name="user_guide_end">嘿，感觉你已经完全掌握了呢\n更多【技能】可以通过手机客户端添加哦</string>
+
 </resources>

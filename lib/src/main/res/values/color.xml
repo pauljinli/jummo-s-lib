@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorToastText">#f9f9f9</color>
+    <color name="colorToastShadow">#000000</color>
+
+    <color name="color_guide_bg">#d9000000</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_black_deep">#666666</color>
+    <color name="red">#F00</color>
+</resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="273dp"
+        android:layout_height="498dp"
+        android:layout_marginTop="122dp"
+        android:background="@drawable/ic_guide_home">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:text="@string/user_guide_welcome"
+            android:textColor="@color/color_white"
+            android:textSize="28sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="144dp"
+            android:text="@string/user_guide_key_up"
+            android:textColor="@color/color_white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="194dp"
+            android:text="@string/user_guide_key_down"
+            android:textColor="@color/color_white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/textView"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="172dp"
+            android:text="@string/user_guide_key_ok"
+            android:textColor="@color/color_white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/textView"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="284dp"
+            android:text="@string/user_guide_key_line"
+            android:textColor="@color/color_white"
+            android:textSize="22sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

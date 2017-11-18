@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-dontoptimize
+-dontpreverify
+-dontobfuscate
+-keepattributes *Annotation*
+-keepattributes Signature
+-keep class com.stockholm.common.** { *; }
+-dontwarn com.stockholm.common.**

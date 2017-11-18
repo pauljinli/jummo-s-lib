@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dev.url">https://dev.api.meowtechnology.com/</string>
+    <string name="dev.ws.url">ws://dev.api.meowtechnology.com/ws</string>
+
+    <string name="stag.url">https://stg.api.meowtechnology.com/</string>
+    <string name="stag.ws.url">ws://stg.api.meowtechnology.com/ws</string>
+
+    <string name="prod.url">https://api.meowtechnology.com/</string>
+    <string name="prod.ws.url">ws://api.meowtechnology.com/ws</string>
+
+</resources>

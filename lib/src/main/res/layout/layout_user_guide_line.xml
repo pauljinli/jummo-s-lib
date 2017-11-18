@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_top_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="210dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center|bottom"
+        android:lineSpacingExtra="14dp"
+        android:textColor="@color/color_white"
+        android:textSize="28sp" />
+
+    <RelativeLayout
+        android:layout_width="319dp"
+        android:layout_height="378dp"
+        android:background="@drawable/ic_guide_line">
+
+        <LinearLayout
+            android:id="@+id/layout_pre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_guide_pre"
+                android:textColor="@color/color_white"
+                android:textSize="22sp" />
+
+            <View
+                android:layout_width="50dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="12dp"
+                android:background="@color/color_white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="216dp"
+            android:gravity="center_vertical"
+            android:visibility="invisible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_guide_next"
+                android:textColor="@color/color_white"
+                android:textSize="22sp" />
+
+            <View
+                android:layout_width="50dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="12dp"
+                android:background="@color/color_white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="160dp"
+            android:gravity="center_vertical"
+            android:visibility="invisible">
+
+            <View
+                android:layout_width="70dp"
+                android:layout_height="2dp"
+                android:background="@color/color_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/user_guide_ok"
+                android:textColor="@color/color_white"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="90dp"
+            android:src="@drawable/anim_guide_arrow"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</LinearLayout>
