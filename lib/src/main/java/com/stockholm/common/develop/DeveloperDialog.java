@@ -12,12 +12,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.stockholm.common.R;
-import com.stockholm.common.api.ApiConfig;
-import com.stockholm.common.api.Env;
 import com.stockholm.common.toast.ToastHelper;
 import com.stockholm.common.utils.NetworkTestUtil;
 
-import net.orange_box.storebox.StoreBox;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
@@ -70,18 +67,7 @@ public class DeveloperDialog implements View.OnClickListener {
                 context.startActivity(intent);
                 dismiss();
             } else if (v.getId() == R.id.btn_network) {
-                ApiConfig apiConfig = StoreBox.create(context, ApiConfig.class);
-                Env env = apiConfig.getEnv(Env.DEV);
-                String url;
-                if (env == Env.DEV) {
-                    url = context.getString(R.string.dev_url);
-                } else if (env == Env.PROD) {
-                    url = context.getString(R.string.prod_url);
-                } else if (env == Env.STG) {
-                    url = context.getString(R.string.stag_url);
-                } else {
-                    url = context.getString(R.string.dev_url);
-                }
+                String url = context.getString(R.string.dev_url);
                 new AsyncTask<String, Void, Boolean>() {
                     @Override
                     protected Boolean doInBackground(String... params) {
