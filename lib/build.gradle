@@ -53,6 +53,7 @@ dependencies {
     compile project.stetho
     compile project.stethoOkhttp
     compile project.storebox
+    compile project.stockholmApi
     compile project.umeng
     compile project.xlog
 
