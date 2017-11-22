@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JummoSmartLib.iml" filepath="$PROJECT_DIR$/JummoSmartLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jummo-s-lib.iml" filepath="$PROJECT_DIR$/jummo-s-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
     </modules>
   </component>
