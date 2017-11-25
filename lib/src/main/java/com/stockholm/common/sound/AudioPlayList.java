@@ -53,6 +53,12 @@ public class AudioPlayList<T extends AudioPlayModel> {
         modelList.add(index, t);
     }
 
+    public void update(int index, T t) {
+        if (modelList.isEmpty()) return;
+        if (index > modelList.size()) return;
+        modelList.set(index, t);
+    }
+
     public boolean play() {
         if (modelList != null && modelList.size() != 0)
             return true;

@@ -12,6 +12,7 @@ import com.stockholm.common.sound.event.AudioPlayControlEvent;
 import com.stockholm.common.sound.event.AudioPlayHistoryEvent;
 import com.stockholm.common.sound.event.AudioPlayListEvent;
 import com.stockholm.common.sound.event.AudioPlayModelEvent;
+import com.stockholm.common.sound.event.AudioPlayModelUpdateEvent;
 import com.stockholm.common.sound.event.AudioPlayProgressEvent;
 import com.stockholm.common.sound.event.AudioPlayStatusEvent;
 import com.stockholm.common.sound.event.AudioPlayVolumeEvent;
@@ -105,6 +106,7 @@ public abstract class AbstractAudioPlayService extends Service implements AudioM
         eventBus.subscribe(AudioPlayListEvent.class, this::handlePlaylistEvent);
         eventBus.subscribe(AudioPlayControlEvent.class, this::handlePlayControlEvent);
         eventBus.subscribe(AudioPlayHistoryEvent.class, this::handlePlayHistoryEvent);
+        eventBus.subscribe(AudioPlayModelUpdateEvent.class, this::handlePlayModelUpdateEvent);
     }
 
     private void initAudioManger() {
@@ -167,6 +169,10 @@ public abstract class AbstractAudioPlayService extends Service implements AudioM
         StockholmLogger.d(TAG, "handlePlayHistoryEvent index: " + event.getIndex() + "-- progress: " + event.getHistoryProgress());
         this.historyProgress = event.getHistoryProgress();
         playList.setIndex(event.getIndex());
+    }
+
+    private void handlePlayModelUpdateEvent(AudioPlayModelUpdateEvent event) {
+        playList.update(event.getIndex(), event.getAudioPlayModel());
     }
 
     @Override

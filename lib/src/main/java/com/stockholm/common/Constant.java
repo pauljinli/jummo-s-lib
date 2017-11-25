@@ -44,6 +44,8 @@ public final class Constant {
 
     public static final String APP_PACKAGE_NAME_DISPLAY = "com.stockholm.display";
 
+    public static final String APP_PACKAGE_NAME_MOZIK = "com.stockholm.mozik";
+
     public static final String ACTION_DEVELOP_ENV = "com.stockholm.develop.env";
 
     public static final String KEY_DEV_ENV = "key_dev_env";
