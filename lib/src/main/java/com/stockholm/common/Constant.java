@@ -54,6 +54,8 @@ public final class Constant {
 
     public static final String KEY_PLAYING_PACKAGE = "key_playing_package";
 
+    public static final String APP_SERVICE_NAME_FOTA = "com.stockholm.fota.ota.FotaService";
+
     private Constant() {
 
     }
