@@ -44,6 +44,8 @@ public final class Constant {
 
     public static final String APP_PACKAGE_NAME_DISPLAY = "com.stockholm.display";
 
+    public static final String APP_PACKAGE_NAME_MOZIK = "com.stockholm.mozik";
+
     public static final String ACTION_DEVELOP_ENV = "com.stockholm.develop.env";
 
     public static final String KEY_DEV_ENV = "key_dev_env";
@@ -51,6 +53,8 @@ public final class Constant {
     public static final String ACTION_VOLUME_CHANGE = "android.media.VOLUME_CHANGED_ACTION";
 
     public static final String KEY_PLAYING_PACKAGE = "key_playing_package";
+
+    public static final String APP_SERVICE_NAME_FOTA = "com.stockholm.fota.ota.FotaService";
 
     private Constant() {
 

@@ -3,8 +3,6 @@ package com.stockholm.common.api;
 
 import android.support.annotation.NonNull;
 
-import com.stockholm.api.NoBodyResp;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
