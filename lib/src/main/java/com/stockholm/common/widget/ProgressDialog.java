@@ -85,6 +85,7 @@ public final class ProgressDialog {
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
             dialog = null;
+            progressDialog = null;
         }
     }
 }
