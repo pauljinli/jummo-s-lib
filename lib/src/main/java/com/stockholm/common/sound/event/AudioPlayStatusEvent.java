@@ -9,7 +9,7 @@ public class AudioPlayStatusEvent {
     public static final int STOP = 3;
     public static final int PREPARE = 4;
     public static final int RESTART = 5;
-    public static final int BUFFER_STOP = 7;
+    public static final int BUFFER_STOP = 8;
 
     public static final int NO_PREVIOUS = 6;
     public static final int NO_NEXT = 7;
