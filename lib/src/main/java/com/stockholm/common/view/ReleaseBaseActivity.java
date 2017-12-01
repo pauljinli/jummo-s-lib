@@ -54,6 +54,7 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
     private NotificationStateManager notificationStateManager;
 
     private DeveloperDialog developerDialog;
+    private boolean hasKeyDown = false;
 
     //use for UMeng
     private long enterMainView;
@@ -209,12 +210,15 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        hasKeyDown = true;
         return systemKeyEventHandler.onKeyDown(keyCode, event, notificationStateManager.isShowing());
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        return systemKeyEventHandler.onKeyUp(keyCode, event, notificationStateManager.isShowing());
+        boolean consume = systemKeyEventHandler.onKeyUp(keyCode, event, notificationStateManager.isShowing(), hasKeyDown);
+        hasKeyDown = false;
+        return consume;
     }
 
     protected void enterDetailView() {

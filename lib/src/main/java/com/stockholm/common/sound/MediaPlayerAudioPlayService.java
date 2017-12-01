@@ -100,6 +100,8 @@ public class MediaPlayerAudioPlayService extends AbstractAudioPlayService implem
     @Override
     public boolean onError(Exception e) {
         StockholmLogger.e(TAG, "onError: " + e.toString());
+        stopProgressTimer();
+        broadcastPlayStatus(AudioPlayStatusEvent.STOP);
         return true;
     }
 

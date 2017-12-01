@@ -236,9 +236,9 @@ class ReleaseSystemKeyEventHandler {
         return true;
     }
 
-    public boolean onKeyUp(int keyCode, KeyEvent event, boolean notificationShow) {
+    public boolean onKeyUp(int keyCode, KeyEvent event, boolean notificationShow, boolean hasKeyDownEvent) {
         if (commandInterface.onAllKeyEvent(event)) {
-            handleKeyUpEvent(keyCode, false);
+            handleKeyUpEvent(keyCode, false, hasKeyDownEvent);
             return true;
         }
 
@@ -265,12 +265,12 @@ class ReleaseSystemKeyEventHandler {
                     break;
             }
         } else {
-            handleKeyUpEvent(keyCode, true);
+            handleKeyUpEvent(keyCode, true, hasKeyDownEvent);
         }
         return true;
     }
 
-    private void handleKeyUpEvent(int keyCode, boolean resumeEvent) {
+    private void handleKeyUpEvent(int keyCode, boolean consumeEvent, boolean hasKeyDownEvent) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_UP:
                 upAction = null;
@@ -281,7 +281,7 @@ class ReleaseSystemKeyEventHandler {
                     upLongPressTimer.cancel();
                     upLongPressTimer = null;
                 }
-                if (resumeEvent && !upLongPress && !multiUpAndDown && !multiUpAndSpace && !multiDownAndUp
+                if (consumeEvent && hasKeyDownEvent && !upLongPress && !multiUpAndDown && !multiUpAndSpace && !multiDownAndUp
                         && !multiSpaceAndUp && !interceptUpAction) {
                     commandInterface.onControlUpClick();
                 }
@@ -298,7 +298,7 @@ class ReleaseSystemKeyEventHandler {
                     downLongPressTimer.cancel();
                     downLongPressTimer = null;
                 }
-                if (resumeEvent && !downLongPress && !multiDownAndUp && !multiUpAndDown && !interceptDownAction) {
+                if (consumeEvent && hasKeyDownEvent && !downLongPress && !multiDownAndUp && !multiUpAndDown && !interceptDownAction) {
                     commandInterface.onControlDownClick();
                 }
                 downLongPress = false;
@@ -308,7 +308,7 @@ class ReleaseSystemKeyEventHandler {
             case KeyEvent.KEYCODE_ENTER:
                 enterAction = null;
                 handler.removeCallbacks(enterPressRunnable);
-                if (resumeEvent && !enterLongPress && !interceptEnterAction) {
+                if (consumeEvent && hasKeyDownEvent && !enterLongPress && !interceptEnterAction) {
                     commandInterface.onControlOKClick();
                 }
                 enterLongPress = false;
@@ -318,7 +318,7 @@ class ReleaseSystemKeyEventHandler {
                 spaceAction = null;
                 handler.removeCallbacks(spacePressRunnable);
                 handler.removeCallbacks(spaceAndUpRunnable);
-                if (resumeEvent && !spaceLongPress && !multiSpaceAndUp && !multiUpAndSpace && !interceptSpaceAction) {
+                if (consumeEvent && hasKeyDownEvent && !spaceLongPress && !multiSpaceAndUp && !multiUpAndSpace && !interceptSpaceAction) {
                     commandInterface.onLineShortDrag();
                 }
                 spaceLongPress = false;
@@ -326,22 +326,22 @@ class ReleaseSystemKeyEventHandler {
                 interceptSpaceAction = false;
                 break;
             case KeyEvent.KEYCODE_N:
-                if (resumeEvent) {
+                if (consumeEvent) {
                     commandInterface.onNotificationButtonClick();
                 }
                 break;
             case KeyEvent.KEYCODE_D:
-                if (resumeEvent) {
+                if (consumeEvent) {
                     commandInterface.onDebugButtonClick();
                 }
                 break;
             case KeyEvent.KEYCODE_V:
-                if (resumeEvent) {
+                if (consumeEvent) {
                     commandInterface.onVersionButtonClick();
                 }
                 break;
             case KeyEvent.KEYCODE_T:
-                if (resumeEvent) {
+                if (consumeEvent) {
                     commandInterface.onTestButtonClick();
                 }
                 break;
