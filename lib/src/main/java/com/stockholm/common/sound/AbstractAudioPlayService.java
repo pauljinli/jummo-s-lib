@@ -131,6 +131,9 @@ public abstract class AbstractAudioPlayService extends Service implements AudioM
                 List<? extends AudioPlayModel> list = event.getPlayModelList();
                 playList.init(list);
                 play();
+            case AudioPlayListEvent.CLEAR:
+                playList.clear();
+                break;
             default:
         }
     }

@@ -59,6 +59,11 @@ public class AudioPlayList<T extends AudioPlayModel> {
         modelList.set(index, t);
     }
 
+    public void clear() {
+        index = 0;
+        modelList.clear();
+    }
+
     public boolean play() {
         if (modelList != null && modelList.size() != 0)
             return true;

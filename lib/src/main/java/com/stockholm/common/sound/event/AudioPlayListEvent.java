@@ -24,6 +24,11 @@ public class AudioPlayListEvent {
 
     public static final int TEMP_INIT = 4;
 
+    /**
+     * clear current play list
+     */
+    public static final int CLEAR = 5;
+
     private int cmd;
 
     private List<? extends AudioPlayModel> playModelList;
