@@ -9,8 +9,6 @@ public final class JPushOrder {
 
     public static final int CONNECT_WEB_SOCKET = 6;
 
-    public static final int ALBUM_SYNC_IMAGE = 8;
-
     public static final int INSTALL_APP = 14;
 
     public static final int UNINSTALL_APP = 15;
@@ -22,6 +20,8 @@ public final class JPushOrder {
     public static final int RESET_DEVICE = 18;
 
     public static final int SKIP_USER_GUIDE = 21;
+
+    public static final int ALBUM_SYNC_IMAGE = 26;
 
     public static final int ENABLE_AUTO_DISPLAY = 997;
 
