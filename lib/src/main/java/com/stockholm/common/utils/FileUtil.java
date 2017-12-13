@@ -65,6 +65,10 @@ public final class FileUtil {
     }
 
     public static void saveBitmap(Bitmap bitmap, String path, String fileName) {
+        saveBitmap(bitmap, path, fileName, 100);
+    }
+
+    public static void saveBitmap(Bitmap bitmap, String path, String fileName, int quality) {
         File file = new File(path);
         if (!file.exists()) {
             file.mkdir();
@@ -72,7 +76,7 @@ public final class FileUtil {
         file = new File(path, fileName);
         try {
             FileOutputStream out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, out);
             out.flush();
             out.close();
             bitmap.recycle();
