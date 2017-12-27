@@ -110,6 +110,19 @@ public final class OsUtils {
         return false;
     }
 
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (manager == null) return false;
+        NetworkInfo info = manager.getActiveNetworkInfo();
+        return info != null && info.isConnected();
+    }
+
+    public static boolean isWifiConnect(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifiNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return null != wifiNetworkInfo && wifiNetworkInfo.getType() == ConnectivityManager.TYPE_WIFI && wifiNetworkInfo.isConnected();
+    }
+
     public static String getCommonLogPath(Context context) {
         return context.getExternalFilesDir(null) + File.separator + context.getPackageName();
     }
