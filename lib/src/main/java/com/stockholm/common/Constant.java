@@ -56,6 +56,8 @@ public final class Constant {
 
     public static final String APP_SERVICE_NAME_FOTA = "com.stockholm.fota.ota.FotaService";
 
+    public static final String KEY_IS_LOCAL = "key_is_local";
+
     private Constant() {
 
     }
