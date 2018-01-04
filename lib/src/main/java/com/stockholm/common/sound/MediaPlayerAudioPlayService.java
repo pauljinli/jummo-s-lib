@@ -189,6 +189,8 @@ public class MediaPlayerAudioPlayService extends AbstractAudioPlayService implem
             progressTimer = new Timer(true);
             ProgressTimerTask progressTimerTask = new ProgressTimerTask();
             VolumeTimerTask volumeTimerTask = new VolumeTimerTask();
+            // Do not change
+            // Error: could not emit value due to lack of requests
             progressTimer.schedule(progressTimerTask, 0, 1000);
             progressTimer.schedule(volumeTimerTask, 0, 1000);
         }
