@@ -52,7 +52,9 @@ public final class Constant {
 
     public static final String ACTION_VOLUME_CHANGE = "android.media.VOLUME_CHANGED_ACTION";
 
-    public static final String KEY_PLAYING_PACKAGE = "key_playing_package";
+    public static final String KEY_STATUS_PACKAGE = "key_status_package";
+
+    public static final String KEY_STATUS_ENTITY = "key_status_entity";
 
     public static final String APP_SERVICE_NAME_FOTA = "com.stockholm.fota.ota.FotaService";
 
