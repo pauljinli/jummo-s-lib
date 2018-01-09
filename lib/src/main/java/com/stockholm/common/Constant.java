@@ -56,6 +56,8 @@ public final class Constant {
 
     public static final String KEY_STATUS_ENTITY = "key_status_entity";
 
+    public static final String KEY_STATUS_RES = "key_status_res";
+
     public static final String APP_SERVICE_NAME_FOTA = "com.stockholm.fota.ota.FotaService";
 
     private Constant() {
