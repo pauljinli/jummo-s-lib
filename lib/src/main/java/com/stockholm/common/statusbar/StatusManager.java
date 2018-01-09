@@ -17,10 +17,11 @@ public final class StatusManager {
         this.status = status;
     }
 
-    public static void dismissStatus(Context context) {
+    public static void dismissStatus(Context context, int resId) {
         StockholmLogger.i(TAG, "dismiss status: " + context.getPackageName());
         Intent intent = new Intent(StatusConstant.ACTION_STATUS_DISMISS);
         intent.putExtra(Constant.KEY_STATUS_PACKAGE, context.getPackageName());
+        intent.putExtra(Constant.KEY_STATUS_RES, resId);
         context.sendBroadcast(intent);
     }
 
