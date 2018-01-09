@@ -21,6 +21,7 @@ public class Status implements Parcelable {
         this.iconRes = builder.iconRes;
         this.order = builder.order;
         this.group = builder.group;
+        this.packageName = builder.packageName;
     }
 
     public String getPackageName() {
