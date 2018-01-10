@@ -34,6 +34,7 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
     private final String TAG = this.getClass().getSimpleName();
     private KillProcessReceiver killProcessReceiver;
     private PowerEventReceiver powerEventReceiver;
+    private PauseSoundReceiver pauseSoundReceiver;
 
     protected enum ViewState {
         MAIN, DETAIL
@@ -73,6 +74,7 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
         registerReceiver();
         lazyLoad();
     }
+
     private void hideNavBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -83,11 +85,17 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
+
     protected abstract void initInject();
 
     protected abstract int getLayoutResource();
 
     protected abstract void init();
+
+    /**
+     * 音频类应用需处理Launcher的暂停指令
+     */
+    protected abstract void pauseSound();
 
     private void initView() {
         viewState = ViewState.MAIN;
@@ -177,6 +185,10 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
         intentFilter.addAction(Intent.ACTION_SCREEN_ON);
         registerReceiver(powerEventReceiver, intentFilter);
 
+        pauseSoundReceiver = new PauseSoundReceiver();
+        IntentFilter pauseFilter = new IntentFilter(IntentExtraKey.ACTION_PAUSE_SOUND);
+        registerReceiver(pauseSoundReceiver, pauseFilter);
+
         nightModeStateManager.registerNightModeReceiver();
         notificationStateManager.registerNightModeReceiver();
     }
@@ -184,6 +196,7 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
     protected void unregisterReceiver() {
         unregisterReceiver(killProcessReceiver);
         unregisterReceiver(powerEventReceiver);
+        unregisterReceiver(pauseSoundReceiver);
         nightModeStateManager.unregisterNightModeReceiver();
         notificationStateManager.unregisterNightModeReceiver();
     }
@@ -372,7 +385,7 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(IntentExtraKey.ACTION_KILL_PROCESS)) {
+            if (IntentExtraKey.ACTION_KILL_PROCESS.equals(intent.getAction())) {
                 String packageName = intent.getStringExtra(IntentExtraKey.KEY_PACKAGE_NAME);
                 if (context.getPackageName().equals(packageName)) {
                     MobclickAgent.onKillProcess(context);
@@ -390,6 +403,16 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
             StockholmLogger.d("PowerEventReceiver", "onReceive: " + action);
             if (action.equals(Intent.ACTION_SCREEN_OFF) || action.equals(Intent.ACTION_SCREEN_ON)) {
                 handler.sendEmptyMessage(MSG_POWER);
+            }
+        }
+    }
+
+    private class PauseSoundReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (IntentExtraKey.ACTION_PAUSE_SOUND.equals(intent.getAction())) {
+                pauseSound();
             }
         }
     }

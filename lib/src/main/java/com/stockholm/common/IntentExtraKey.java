@@ -15,6 +15,7 @@ public final class IntentExtraKey {
     public static final String ACTION_SHOW_NIGHT_MODE = "com.stockholm.ACTION_SHOW_NIGHT_MODE";
     public static final String ACTION_CLEAR_NIGHT_MODE = "com.stockholm.ACTION_CLEAR_NIGHT_MODE";
     public static final String ACTION_KILL_PROCESS = "com.stockholm.ACTION_KILL_PROCESS";
+    public static final String ACTION_PAUSE_SOUND = "com.stockholm.ACTION_PAUSE_SOUND";
 
     public static final String ACTION_BIND_SUCCESS = "com.stockholm.action.BIND_SUCCESS";
 
