@@ -28,6 +28,7 @@ public abstract class AbstractAudioPlayService extends Service implements AudioM
     protected RxEventBus eventBus;
     protected int historyProgress;
     private AudioManager audioManager;
+    private AudioManager.OnAudioFocusChangeListener onAudioFocusChangeListener;
 
     @Override
     public void onCreate() {
@@ -111,6 +112,11 @@ public abstract class AbstractAudioPlayService extends Service implements AudioM
 
     private void initAudioManger() {
         audioManager = (AudioManager) getApplicationContext().getSystemService(Service.AUDIO_SERVICE);
+        onAudioFocusChangeListener = focusChange -> {
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                stop();
+            }
+        };
     }
 
     private void handlePlaylistEvent(AudioPlayListEvent event) {
