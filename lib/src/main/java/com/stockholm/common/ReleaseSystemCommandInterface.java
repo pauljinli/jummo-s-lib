@@ -58,6 +58,11 @@ public interface ReleaseSystemCommandInterface {
     void onControlOkLongClick();
 
     /**
+     * 线控按钮OK双击事件
+     */
+    void onControlOkDoubleClick();
+
+    /**
      * 反向切换app
      */
     void onReverseSwitchAppClick();

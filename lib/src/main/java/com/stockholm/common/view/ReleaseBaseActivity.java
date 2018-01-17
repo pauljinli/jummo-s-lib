@@ -334,6 +334,11 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
     }
 
     @Override
+    public void onControlOkDoubleClick() {
+        StockholmLogger.d(TAG, "onControlOkDoubleClick: ");
+    }
+
+    @Override
     public void onReverseSwitchAppClick() {
         StockholmLogger.d(TAG, "onReverseSwitchAppClick.");
         sendBroadcast(new Intent(IntentExtraKey.ACTION_OPEN_PRE_APP));

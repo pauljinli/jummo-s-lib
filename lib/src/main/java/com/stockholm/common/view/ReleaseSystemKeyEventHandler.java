@@ -15,6 +15,7 @@ import java.util.TimerTask;
 class ReleaseSystemKeyEventHandler {
     private static final String TAG = "ReleaseSystemKeyEventHandler";
     private static final long LONG_PRESS_DISTANCE = 1000L;
+    private static final long DOUBLE_PRESS_DISTANCE = 500L;
     private static final long VOLUME_LONG_PRESS_PERIOD = 500L;
 
     private Context context;
@@ -61,6 +62,10 @@ class ReleaseSystemKeyEventHandler {
     private Timer upLongPressTimer;
     private Timer downLongPressTimer;
 
+    //enter double press
+    private long lastPressEnterTime;
+    private boolean enterDoublePress;
+
     // runnable start
     private final Runnable upPressRunnable = new Runnable() {
 
@@ -97,6 +102,23 @@ class ReleaseSystemKeyEventHandler {
         public void run() {
             enterLongPress = true;
             commandInterface.onControlOkLongClick();
+        }
+    };
+
+    private final Runnable enterDoublePressRunnable = new Runnable() {
+        @Override
+        public void run() {
+            long currentClickTime = System.currentTimeMillis();
+            long elapsedTime = currentClickTime - lastPressEnterTime;
+            lastPressEnterTime = currentClickTime;
+
+            if (elapsedTime < DOUBLE_PRESS_DISTANCE) {
+                enterDoublePress = true;
+                lastPressEnterTime = 0;
+                commandInterface.onControlOkDoubleClick();
+            } else {
+                enterDoublePress = false;
+            }
         }
     };
 
@@ -209,6 +231,7 @@ class ReleaseSystemKeyEventHandler {
                             return false;
                         }
                         enterAction = new KeyAction();
+                        handler.post(enterDoublePressRunnable);
                         handler.postDelayed(enterPressRunnable, LONG_PRESS_DISTANCE);
                         break;
                     case KeyEvent.KEYCODE_SPACE:
@@ -237,18 +260,17 @@ class ReleaseSystemKeyEventHandler {
     }
 
     public boolean onKeyUp(int keyCode, KeyEvent event, boolean notificationShow, boolean hasKeyDownEvent) {
+        StockholmLogger.d(TAG, "onKeyUp: " + keyCode + ", showNotification: " + notificationShow);
         if (commandInterface.onAllKeyEvent(event)) {
             handleKeyUpEvent(keyCode, false, hasKeyDownEvent);
             return true;
         }
 
-        StockholmLogger.d(TAG, "onKeyUp: " + keyCode + ", showNotification: " + notificationShow);
         if (notificationShow) {
             switch (keyCode) {
                 case KeyEvent.KEYCODE_ENTER:
                     enterAction = null;
                     if (!interceptEnterAction) {
-                        StockholmLogger.d(TAG, "onKeyUp: pause notification");
                         NotificationManager.pauseNotification(context);
                     }
                     interceptEnterAction = false;
@@ -256,7 +278,6 @@ class ReleaseSystemKeyEventHandler {
                 case KeyEvent.KEYCODE_SPACE:
                     spaceAction = null;
                     if (!interceptSpaceAction) {
-                        StockholmLogger.d(TAG, "onKeyUp: clear notification");
                         NotificationManager.clearNotification(context);
                     }
                     interceptSpaceAction = false;
@@ -309,7 +330,10 @@ class ReleaseSystemKeyEventHandler {
                 enterAction = null;
                 handler.removeCallbacks(enterPressRunnable);
                 if (consumeEvent && hasKeyDownEvent && !enterLongPress && !interceptEnterAction) {
-                    commandInterface.onControlOKClick();
+                    handler.postDelayed(() -> {
+                        StockholmLogger.d(TAG, "handleKeyUpEvent: " + enterDoublePress);
+                        if (!enterDoublePress) commandInterface.onControlOKClick();
+                    }, DOUBLE_PRESS_DISTANCE);
                 }
                 enterLongPress = false;
                 interceptEnterAction = false;
