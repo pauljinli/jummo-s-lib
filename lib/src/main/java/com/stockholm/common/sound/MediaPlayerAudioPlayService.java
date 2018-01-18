@@ -191,8 +191,8 @@ public class MediaPlayerAudioPlayService extends AbstractAudioPlayService implem
             VolumeTimerTask volumeTimerTask = new VolumeTimerTask();
             // Do not change
             // Error: could not emit value due to lack of requests
-            progressTimer.schedule(progressTimerTask, 0, 1000);
-            progressTimer.schedule(volumeTimerTask, 0, 1000);
+            progressTimer.schedule(progressTimerTask, 0, 100);
+            progressTimer.schedule(volumeTimerTask, 0, 100);
         }
     }
 
