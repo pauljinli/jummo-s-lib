@@ -23,6 +23,8 @@ public final class JPushOrder {
 
     public static final int ALBUM_SYNC_IMAGE = 26;
 
+    public static final int WEATHER_SWITCH_CITY = 27;
+
     public static final int ENABLE_AUTO_DISPLAY = 997;
 
     public static final int TASK_UPDATE = 109;
