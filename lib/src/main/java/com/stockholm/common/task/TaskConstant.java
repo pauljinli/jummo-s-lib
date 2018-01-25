@@ -17,6 +17,8 @@ public final class TaskConstant {
 
     public static final String KEY_TASK_MODEL = "key_task_model";
 
+    public static final String ACTION_TASK_COMPLETE="action.stockholm.TASK_COMPLETE";
+
     private TaskConstant() {
 
     }
