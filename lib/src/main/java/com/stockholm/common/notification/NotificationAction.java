@@ -14,6 +14,7 @@ public final class NotificationAction {
     public static final String ACTION_ADD_NOTIFICATION_INTENT = "com.stockholm.ACTION_ADD_NOTIFICATION_INTENT";
     public static final String ACTION_CLEAR_NOTIFICATION_INTENT = "com.stockholm.ACTION_CLEAR_NOTIFICATION_INTENT";
     public static final String ACTION_PAUSE_NOTIFICATION_INTENT = "com.stockholm.ACTION_PAUSE_NOTIFICATION_INTENT";
+    public static final String ACTION_CLEAR_ALARM_NOTIFICATION_INTENT = "com.stockholm.ACTION_CLEAR_ALARM_NOTIFICATION_INTENT";
 
     private NotificationAction() {
 
