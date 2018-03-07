@@ -27,4 +27,8 @@ public final class NotificationManager {
         context.sendBroadcast(intent);
     }
 
+    public static void clearAlarmNotification(Context context) {
+        Intent intent = new Intent(NotificationAction.ACTION_CLEAR_ALARM_NOTIFICATION_INTENT);
+        context.sendBroadcast(intent);
+    }
 }
