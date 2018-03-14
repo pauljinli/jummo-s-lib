@@ -50,6 +50,10 @@ public class RxEventBus {
         subscriptions.add(rxBus.toObservable(dtoType).observeOn(scheduler).subscribe(onSuccess));
     }
 
+    public <T> void subscribe(Class<T> dtoType, Scheduler scheduler, Action1<T> onSuccess, Action1<Throwable> onError) {
+        subscriptions.add(rxBus.toObservable(dtoType).observeOn(scheduler).subscribe(onSuccess, onError));
+    }
+
     public void unsubscribe() {
         subscriptions.unsubscribe();
     }
