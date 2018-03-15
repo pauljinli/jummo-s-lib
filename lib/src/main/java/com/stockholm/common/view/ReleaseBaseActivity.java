@@ -20,6 +20,7 @@ import com.stockholm.common.ReleaseSystemCommandInterface;
 import com.stockholm.common.develop.DeveloperDialog;
 import com.stockholm.common.nightmode.NightModeStateManager;
 import com.stockholm.common.notification.NotificationStateManager;
+import com.stockholm.common.ota.OtaViewManager;
 import com.stockholm.common.toast.VolumeToastHelper;
 import com.stockholm.common.utils.StockholmLogger;
 import com.stockholm.common.utils.WeakHandler;
@@ -53,6 +54,7 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
     private ReleaseSystemKeyEventHandler systemKeyEventHandler;
     private NightModeStateManager nightModeStateManager;
     private NotificationStateManager notificationStateManager;
+    private OtaViewManager otaViewManager;
 
     private DeveloperDialog developerDialog;
     private boolean hasKeyDown = false;
@@ -70,6 +72,7 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
         initSystemKeyHandler();
         nightModeStateManager = new NightModeStateManager(this);
         notificationStateManager = new NotificationStateManager(this);
+        otaViewManager = new OtaViewManager(this);
         initCountdown();
         registerReceiver();
         lazyLoad();
@@ -191,6 +194,7 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
 
         nightModeStateManager.registerNightModeReceiver();
         notificationStateManager.registerNightModeReceiver();
+        otaViewManager.registerOtaViewReceiver();
     }
 
     protected void unregisterReceiver() {
@@ -199,6 +203,7 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
         unregisterReceiver(pauseSoundReceiver);
         nightModeStateManager.unregisterNightModeReceiver();
         notificationStateManager.unregisterNightModeReceiver();
+        otaViewManager.unregisterOtaViewReceiver();
     }
 
     protected void showProgressDialog() {
@@ -252,6 +257,9 @@ public abstract class ReleaseBaseActivity extends AppCompatActivity implements R
 
     @Override
     public boolean onAllKeyEvent(KeyEvent event) {
+        if (otaViewManager.isShowing()) {
+            return true;
+        }
         sendBroadcast(new Intent(IntentExtraKey.ACTION_DISMISS_AUTO_DISPLAY));
         if (nightModeStateManager.isShowing()) {
             sendBroadcast(new Intent(IntentExtraKey.ACTION_ANY_KEY_PRESSED));

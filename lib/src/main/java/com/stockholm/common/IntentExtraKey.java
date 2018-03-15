@@ -16,6 +16,8 @@ public final class IntentExtraKey {
     public static final String ACTION_CLEAR_NIGHT_MODE = "com.stockholm.ACTION_CLEAR_NIGHT_MODE";
     public static final String ACTION_KILL_PROCESS = "com.stockholm.ACTION_KILL_PROCESS";
     public static final String ACTION_PAUSE_SOUND = "com.stockholm.ACTION_PAUSE_SOUND";
+    public static final String ACTION_SHOW_OTA_VIEW = "com.stockholm.ACTION_SHOW_OTA_VIEW";
+    public static final String ACTION_CLEAR_OTA_VIEW = "com.stockholm.ACTION_CLEAR_OTA_VIEW";
 
     public static final String ACTION_BIND_SUCCESS = "com.stockholm.action.BIND_SUCCESS";
 
@@ -26,7 +28,7 @@ public final class IntentExtraKey {
     //weather
     public static final String ACTION_GET_WEATHER = "com.stockholm.ACTION_GET_WEATHER";
     public static final String ACTION_RESPONSE_WEATHER = "com.stockholm.ACTION_RESPONSE_WEATHER";
-    public static final String KEY_WEATHER_TEMPERATURE  = "key_weather_temperature";
+    public static final String KEY_WEATHER_TEMPERATURE = "key_weather_temperature";
     public static final String KEY_WEATHER_DESCRIPTION = "key_weather_description";
     public static final String KEY_WEATHER_TYPE = "key_weather_type";
 
