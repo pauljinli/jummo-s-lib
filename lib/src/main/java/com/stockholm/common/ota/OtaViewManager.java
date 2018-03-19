@@ -8,12 +8,15 @@ import android.content.IntentFilter;
 
 import com.stockholm.common.IntentExtraKey;
 
+import javax.inject.Inject;
+
 public class OtaViewManager {
 
     private Context context;
     private boolean showing = false;
     private OtaViewReceiver otaViewReceiver;
 
+    @Inject
     public OtaViewManager(Context context) {
         this.context = context;
     }
