@@ -23,7 +23,7 @@ public class MediaPlayerAudioPlayService extends AbstractAudioPlayService implem
 
     private static final String TAG = MediaPlayerAudioPlayService.class.getSimpleName();
 
-    private AudioPlayer audioPlayer;
+    protected AudioPlayer audioPlayer;
 
     //play progress.
     private Timer progressTimer;
